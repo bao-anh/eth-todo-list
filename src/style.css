@@ -1,0 +1,46 @@
+.navbar {
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+}
+
+.menu-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#account {
+  color: grey;
+}
+
+#loader {
+  text-align: center;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.introduction {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.task-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+}
+
+.task-item {
+  display: none;
+  padding: 10px;
+  background-color: var(--bs-gray-200);
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+}
