@@ -78,7 +78,7 @@ const App = {
       $task.find('input')
         .prop('name', taskId)
         .prop('checked', taskCompleted)
-        // .on('click', App.toggleComplete)
+        .on('click', App.toggleCompleted)
 
       if (taskCompleted) {
         $('#completed-task-list').append($task);
@@ -93,6 +93,13 @@ const App = {
     const content = $('#add-task').val()
     await App.todoList.addTask(content, { from: App.account });
     window.location.reload();
+    App.setIsLoading(false);
+  },
+
+  toggleCompleted: async (e) => {
+    App.setIsLoading(true);
+    const taskId = e.target.name;
+    await App.todoList.toggleCompleteTask(taskId, { from: App.account });
     App.setIsLoading(false);
   },
 

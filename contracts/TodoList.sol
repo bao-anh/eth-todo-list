@@ -13,6 +13,7 @@ contract TodoList {
   mapping(uint => Task) public tasks;
 
   event TaskAdded(uint id, string content, bool completed);
+  event TaskCompleted(uint id, bool completed);
 
   constructor() public {
     addTask("Learn solidity");
@@ -23,5 +24,11 @@ contract TodoList {
     taskCount++;
     tasks[taskCount] = Task(taskCount, _content, false);
     emit TaskAdded(taskCount, _content, false);
+  }
+
+  function toggleCompleteTask(uint taskId) public {
+    bool completed = tasks[taskId].completed;
+    tasks[taskId].completed = !completed;
+    emit TaskCompleted(taskId, !completed);
   }
 }
