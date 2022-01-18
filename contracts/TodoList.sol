@@ -12,6 +12,8 @@ contract TodoList {
 
   mapping(uint => Task) public tasks;
 
+  event TaskAdded(uint id, string content, bool completed);
+
   constructor() public {
     addTask("Learn solidity");
     addTask("Learn new vocabulary");
@@ -20,5 +22,6 @@ contract TodoList {
   function addTask(string memory _content) public {
     taskCount++;
     tasks[taskCount] = Task(taskCount, _content, false);
+    emit TaskAdded(taskCount, _content, false);
   }
 }

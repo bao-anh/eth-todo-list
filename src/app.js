@@ -42,9 +42,8 @@ const App = {
   },
 
   loadAccount: async () => {
-    web3.eth.getAccounts().then(function(accounts){
-      App.account = accounts[0];
-    })
+    const accounts = await web3.eth.getAccounts();
+    App.account = accounts[0];
   },
 
   loadContract: async() => {
@@ -87,6 +86,14 @@ const App = {
         $('#task-list').append($task);
       }
     }
+  },
+
+  addTask: async() => {
+    App.setIsLoading(true);
+    const content = $('#add-task').val()
+    await App.todoList.addTask(content, { from: App.account });
+    window.location.reload();
+    App.setIsLoading(false);
   },
 
   setIsLoading: (isLoading) => {
